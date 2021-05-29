@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "libs/jars/lwjgl.jar",
+        "libs/jars/lwjgl_util.jar",
+        "libs/jars/slick-util.jar"
+    ]
+}
