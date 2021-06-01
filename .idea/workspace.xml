@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b63b515c-34bf-4d2a-8b4c-e7914adf0cad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GameEngine/engineTester/MainGameLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/engineTester/MainGameLoop.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GameEngine/entities/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/entities/Camera.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/entities/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/entities/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/entities/Light.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/entities/Light.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/models/RawModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/models/RawModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/models/TextureModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/models/TextureModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/DisplayManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/DisplayManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/EntityRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/EntityRenderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/Loader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/Loader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/MasterRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/MasterRenderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/OBJLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/OBJLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/TerrainRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/renderEngine/TerrainRenderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/shaders/ShaderProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/shaders/ShaderProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/shaders/StaticShader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/shaders/StaticShader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/shaders/TerrainShader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/shaders/TerrainShader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/terrains/Terrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/terrains/Terrain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/textures/ModelTexture.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/textures/ModelTexture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GameEngine/toolBox/Maths.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/toolBox/Maths.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolBox/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolBox/Maths.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +23,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1fdgjcEbByxh3A2AlWQmVq0Afpj" />
   <component name="ProjectViewState">
@@ -149,5 +142,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

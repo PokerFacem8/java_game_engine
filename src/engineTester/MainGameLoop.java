@@ -5,6 +5,8 @@ import entities.Entity;
 import entities.Light;
 import models.TextureModel;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
@@ -53,15 +55,26 @@ public class MainGameLoop {
         //Light and Camera
         Light light = new Light(new Vector3f(0,50,0), new Vector3f(1,1,1));
         Camera camera = new Camera();
+        //Sensitivity
+        //camera.setSensitivity(2f);
+        //Camera Speed
+        camera.setCameraSpeed(5f);
+
 
         //Master Renderer
         MasterRenderer renderer = new MasterRenderer();
 
+        //Mouse
+        Mouse.create();
+        Mouse.setGrabbed(true);
+
         while (!Display.isCloseRequested()){
 
             //game logic
+
             //entity.increasePosition(0,0,0);
             camera.move();
+            camera.mouseDirection();
             light.move();
 
             //Terrains
@@ -75,12 +88,18 @@ public class MainGameLoop {
                 //entity.increaseRotation(0,1,0);
             }
 
+            //Exit Game
+            if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
+                break;
+            }
+
             //render
             renderer.render(light, camera);
 
             displayManager.updateDisplay();
         }
 
+        Mouse.destroy();
         renderer.cleanUp();
         loader.cleanUp();
         displayManager.closeDisplay();
