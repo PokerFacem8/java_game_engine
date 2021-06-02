@@ -7,6 +7,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/GameEngine/entities/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GameEngine/entities/Camera.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engineTester/MainGameLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Light.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/toolBox/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolBox/Maths.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

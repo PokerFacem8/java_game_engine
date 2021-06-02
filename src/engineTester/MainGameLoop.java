@@ -55,18 +55,9 @@ public class MainGameLoop {
         //Light and Camera
         Light light = new Light(new Vector3f(0,50,0), new Vector3f(1,1,1));
         Camera camera = new Camera();
-        //Sensitivity
-        //camera.setSensitivity(2f);
-        //Camera Speed
-        camera.setCameraSpeed(5f);
-
 
         //Master Renderer
         MasterRenderer renderer = new MasterRenderer();
-
-        //Mouse
-        Mouse.create();
-        Mouse.setGrabbed(true);
 
         while (!Display.isCloseRequested()){
 
@@ -74,7 +65,6 @@ public class MainGameLoop {
 
             //entity.increasePosition(0,0,0);
             camera.move();
-            camera.mouseDirection();
             light.move();
 
             //Terrains
@@ -99,7 +89,7 @@ public class MainGameLoop {
             displayManager.updateDisplay();
         }
 
-        Mouse.destroy();
+        camera.destroy();
         renderer.cleanUp();
         loader.cleanUp();
         displayManager.closeDisplay();

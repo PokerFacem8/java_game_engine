@@ -41,7 +41,7 @@ public class Light {
         if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)){
             position.x-=1f;
         }
-        if(Keyboard.isKeyDown(Keyboard.KEY_RCONTROL)){
+        if(Keyboard.isKeyDown(Keyboard.KEY_SLASH)){
             position.y+=1f;
         }
         if(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)){

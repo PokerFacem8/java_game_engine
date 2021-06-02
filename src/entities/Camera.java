@@ -1,62 +1,71 @@
 package entities;
 
+import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.input.Mouse;
 
-import java.text.Normalizer;
-
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
+import java.security.Key;
 
 public class Camera {
 
     private Vector3f position = new Vector3f(0,0,0);
-    private Vector3f cameraFront = new Vector3f(0,0,0);
+    private Vector3f cameraDirection = new Vector3f(0,0,0);
 
-    private float pitch;
-    private float yaw;
-    private float roll;
+    //Direction Angles
+    private float pitch = 0f;
+    private float yaw = 0f;
+    private float roll = 0f;
 
-    private float sensitivity;
-    private float cameraSpeed = 1f;
+    //Options
+    private float sensitivity = 1f;
+    private float cameraSpeed = 5f;
+
     private boolean firstMouse = true;
     private float lastX;
     private float lastY;
 
-    public Camera() {}
+    public Camera() throws LWJGLException {
+        Mouse.create();
+        Mouse.setClipMouseCoordinatesToWindow(false);
+        Mouse.setGrabbed(true);
+    }
+
+    public void destroy(){
+        Mouse.destroy();
+    }
 
     public void move(){
 
-        System.out.println(cameraFront.x);
-        System.out.println(cameraFront.y);
-
-        //CameraFront 1 <-> -1
+        //Get Camera Direction Vector3f
+        mouseDirection();
 
         if(Keyboard.isKeyDown(Keyboard.KEY_W)){
-            position.z-= 0.15f * cameraSpeed;
-            //position = new Vector3f(position.x, position.y, cameraFront.z * cameraSpeed);
-
+            position.z -= (cameraDirection.z * 0.15f) * cameraSpeed;
+            position.x -= (-cameraDirection.x * 0.15f) * cameraSpeed;
+            position.y += (-cameraDirection.y * 0.15f) * cameraSpeed;
         }
         if(Keyboard.isKeyDown(Keyboard.KEY_S)){
-            position.z+= 0.15f * cameraSpeed;
+            position.z += (cameraDirection.z * 0.15f) * cameraSpeed;
+            position.x += (-cameraDirection.x * 0.15f) * cameraSpeed;
+            position.y -= (-cameraDirection.y * 0.15f) * cameraSpeed;
         }
+
         if(Keyboard.isKeyDown(Keyboard.KEY_D)){
-            position.x+=0.15f * cameraSpeed;
+            position.z += (cameraDirection.x * 0.15f) * cameraSpeed;
+            position.x += (cameraDirection.z * 0.15f) * cameraSpeed;
         }
-        if(Keyboard.isKeyDown(Keyboard.KEY_A)){
-            position.x-=0.15f * cameraSpeed;
+        if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
+            position.z -= (cameraDirection.x * 0.15f) * cameraSpeed;
+            position.x -= (cameraDirection.z * 0.15f) * cameraSpeed;
         }
-        /*if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
+
+        if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
             position.y+=0.15f * cameraSpeed;
         }
         if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)){
             position.y-=0.15f * cameraSpeed;
-        }*/
-
-
-
+        }
     }
 
     public void mouseDirection(){
@@ -82,25 +91,9 @@ public class Camera {
         yaw   += xoffset;
         pitch += yoffset;
 
-        if(pitch > 89.0f)
-            pitch = 89.0f;
-        if(pitch < -89.0f)
-            pitch = -89.0f;
-
-        Vector3f direction = new Vector3f(0,0,0);
-
-        direction.x = (float) (cos(Math.toRadians(yaw)) * cos(Math.toRadians(pitch)));
-        direction.y = (float) sin(Math.toRadians(pitch));
-        direction.z = (float) (sin(Math.toRadians(yaw)) * cos(Math.toRadians(pitch)));
-        cameraFront = (Vector3f) direction.normalise();
-    }
-
-    public Vector3f getCameraFront() {
-        return cameraFront;
-    }
-
-    public void setCameraFront(Vector3f cameraFront) {
-        this.cameraFront = cameraFront;
+        cameraDirection.x = (float) Math.sin(Math.toRadians(yaw));
+        cameraDirection.y = (float) Math.sin(Math.toRadians(pitch));
+        cameraDirection.z = (float) Math.cos(Math.toRadians(yaw));
     }
 
     public float getSensitivity() {
