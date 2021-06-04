@@ -1,5 +1,6 @@
 package renderEngine;
 
+import jdk.swing.interop.SwingInterOpUtils;
 import models.RawModel;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -9,10 +10,13 @@ import org.lwjgl.opengl.GL30;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
+import javax.xml.transform.Source;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,12 +38,17 @@ public class Loader {
         return new RawModel(vaoID, indices.length);
     }
 
-    public int loadTexture(String filename){
+    public int loadTexture(String filename, String extension){
         Texture texture = null;
         try {
-            texture = TextureLoader.getTexture("PNG",new FileInputStream("res/"+filename+".png"));
+            texture = TextureLoader.getTexture("PNG",new FileInputStream("res/textures/" + filename + "." + extension));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Warning: Texture with name " + filename + "." + extension + " is not loading!");
+            try{
+                texture = TextureLoader.getTexture("PNG", new FileInputStream("res/textures/missing_texture.png"));
+            }catch (IOException e2){
+                e2.printStackTrace();
+            }
         }
         int textureID = texture.getTextureID();
         textures.add(textureID);

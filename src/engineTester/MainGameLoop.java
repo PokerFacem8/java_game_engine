@@ -6,12 +6,10 @@ import entities.Light;
 import models.TextureModel;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.*;
 import models.RawModel;
-import shaders.StaticShader;
 import terrains.Terrain;
 import textures.ModelTexture;
 
@@ -29,7 +27,7 @@ public class MainGameLoop {
 
         //Model (Trees)
         RawModel model = OBJLoader.loadObjModel("cube", loader);
-        ModelTexture texture = new ModelTexture(loader.loadTexture("gold"));
+        ModelTexture texture = new ModelTexture(loader.loadTexture("gold", "png"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         TextureModel texturedModel = new TextureModel(model, texture);
@@ -47,10 +45,10 @@ public class MainGameLoop {
         }
 
         //Terrain
-        Terrain terrain = new Terrain(0,0,loader, new ModelTexture(loader.loadTexture("grass")));
-        Terrain terrain2 = new Terrain(1,0,loader, new ModelTexture(loader.loadTexture("grass")));
-        Terrain terrain3 = new Terrain(0,1,loader, new ModelTexture(loader.loadTexture("grass")));
-        Terrain terrain4 = new Terrain(1,1,loader, new ModelTexture(loader.loadTexture("grass")));
+        Terrain terrain = new Terrain(0,0,loader, new ModelTexture(loader.loadTexture("grass", "png")));
+        Terrain terrain2 = new Terrain(1,0,loader, new ModelTexture(loader.loadTexture("brick_ground", "jpg")));
+        Terrain terrain3 = new Terrain(0,1,loader, new ModelTexture(loader.loadTexture("grass","png")));
+        Terrain terrain4 = new Terrain(1,1,loader, new ModelTexture(loader.loadTexture("grass", "png")));
 
         //Light and Camera
         Light light = new Light(new Vector3f(0,50,0), new Vector3f(1,1,1));
