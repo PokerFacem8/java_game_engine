@@ -5,6 +5,8 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.util.vector.Vector4f;
 
+import java.util.Date;
+
 public class Maths {
 
     //Creates a transformation matrix that will be applied to model vertex
@@ -30,5 +32,11 @@ public class Maths {
         Matrix4f.translate(negativeCameraPos,viewMatrix,viewMatrix);
 
         return viewMatrix;
+    }
+
+    public static long generateUniqueId(){
+        Date newDate = new Date();
+        long millis = (long) (newDate.getTime() + Math.ceil(Math.random() * 99));
+        return millis;
     }
 }

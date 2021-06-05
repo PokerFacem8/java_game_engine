@@ -20,18 +20,22 @@ import java.util.Random;
 public class MainGameLoop {
     public static void main(String[] args) throws LWJGLException {
 
-        //Display Manger and Loader
+        //TODO: Create Game Scene Manager
+
+        //DisplayManager, Loader and MasterRenderer
         DisplayManager displayManager = new DisplayManager();
         displayManager.createDisplay();
         Loader loader = new Loader();
+        MasterRenderer renderer = new MasterRenderer();
 
-        //Model (Trees)
+        //Create Models
         RawModel model = OBJLoader.loadObjModel("cube", loader);
         ModelTexture texture = new ModelTexture(loader.loadTexture("gold", "png"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
         TextureModel texturedModel = new TextureModel(model, texture);
 
+        //Create Entities
         List<Entity> entities = new ArrayList<Entity>();
         for(int i = 0; i <= 5000; i++){
             Random r = new Random();
@@ -44,50 +48,50 @@ public class MainGameLoop {
             entities.add(entity);
         }
 
-        //Terrain
+        //Create Terrain
+        List<Terrain> terrains = new ArrayList<Terrain>();
         Terrain terrain = new Terrain(0,0,loader, new ModelTexture(loader.loadTexture("grass", "png")));
-        Terrain terrain2 = new Terrain(1,0,loader, new ModelTexture(loader.loadTexture("brick_ground", "jpg")));
+        terrains.add(terrain);
+        Terrain terrain2 = new Terrain(1,0,loader, new ModelTexture(loader.loadTexture("brick_ground", "png")));
+        terrains.add(terrain2);
         Terrain terrain3 = new Terrain(0,1,loader, new ModelTexture(loader.loadTexture("grass","png")));
+        terrains.add(terrain3);
         Terrain terrain4 = new Terrain(1,1,loader, new ModelTexture(loader.loadTexture("grass", "png")));
+        terrains.add(terrain4);
 
-        //Light and Camera
+
+        //Create Light and Camera
         Light light = new Light(new Vector3f(0,50,0), new Vector3f(1,1,1));
         Camera camera = new Camera();
 
-        //Master Renderer
-        MasterRenderer renderer = new MasterRenderer();
 
+        //Create GameScene Manager
+        GameSceneManager gameSceneManager = new GameSceneManager();
+
+        //Create GameScene
+        GameScene gameScene = new GameScene("GameScene1",entities, terrains, camera, light, renderer);
+
+        //Add GameScene to GameSceneManager
+        gameSceneManager.getGameScenes().add(gameScene);
+
+        //Game Main Loop
         while (!Display.isCloseRequested()){
 
+            //GameScene Start //TODO: Start specific scene by Id
+            gameScene.start();
+            System.out.println(gameScene.getId());
+
             //game logic
-
-            //entity.increasePosition(0,0,0);
-            camera.move();
-            light.move();
-
-            //Terrains
-            renderer.processTerrain(terrain);
-            renderer.processTerrain(terrain2);
-            renderer.processTerrain(terrain3);
-            renderer.processTerrain(terrain4);
-
-            for(Entity entity:entities){
-                renderer.processEntity(entity);
-                //entity.increaseRotation(0,1,0);
-            }
 
             //Exit Game
             if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
                 break;
             }
 
-            //render
-            renderer.render(light, camera);
-
             displayManager.updateDisplay();
         }
 
-        camera.destroy();
+        gameScene.getCamera().destroy();
         renderer.cleanUp();
         loader.cleanUp();
         displayManager.closeDisplay();
