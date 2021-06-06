@@ -50,13 +50,13 @@ public class MainGameLoop {
 
         //Create Terrain
         List<Terrain> terrains = new ArrayList<Terrain>();
-        Terrain terrain = new Terrain(0,0,loader, new ModelTexture(loader.loadTexture("grass", "png")));
+        Terrain terrain = new Terrain(0,0,loader, new ModelTexture(loader.loadTexture("grass", "png")), "heightmap");
         terrains.add(terrain);
-        Terrain terrain2 = new Terrain(1,0,loader, new ModelTexture(loader.loadTexture("brick_ground", "png")));
+        Terrain terrain2 = new Terrain(1,0,loader, new ModelTexture(loader.loadTexture("grass", "png")),"heightmap");
         terrains.add(terrain2);
-        Terrain terrain3 = new Terrain(0,1,loader, new ModelTexture(loader.loadTexture("grass","png")));
+        Terrain terrain3 = new Terrain(0,1,loader, new ModelTexture(loader.loadTexture("grass","png")), "heightmap");
         terrains.add(terrain3);
-        Terrain terrain4 = new Terrain(1,1,loader, new ModelTexture(loader.loadTexture("grass", "png")));
+        Terrain terrain4 = new Terrain(1,1,loader, new ModelTexture(loader.loadTexture("grass", "png")), "heightmap");
         terrains.add(terrain4);
 
 
@@ -79,7 +79,6 @@ public class MainGameLoop {
 
             //GameScene Start //TODO: Start specific scene by Id
             gameScene.start();
-            System.out.println(gameScene.getId());
 
             //game logic
 

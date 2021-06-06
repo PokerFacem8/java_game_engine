@@ -2,8 +2,12 @@ package entities;
 
 import models.TextureModel;
 import org.lwjgl.util.vector.Vector3f;
+import toolBox.Maths;
 
 public class Entity {
+
+    //Entity Id
+    private long id;
 
     private TextureModel model;
     private Vector3f position;
@@ -11,6 +15,7 @@ public class Entity {
     private float scale;
 
     public Entity(TextureModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
+        this.id = Maths.generateUniqueId();
         this.model = model;
         this.position = position;
         this.rotX = rotX;
